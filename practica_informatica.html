@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Práctica interactiva de Python basada en las cuatro primeras prácticas de Informática.">
+<title>Práctica de Informática · Python</title>
+<style>
+:root{--ink:#18263a;--muted:#617086;--paper:#f4f7fb;--card:#fff;--line:#dce4ed;--blue:#315be8;--blue-dark:#2248cd;--pale:#edf2ff;--green:#18794e;--green-bg:#e7f7ee;--red:#b42318;--red-bg:#fff0ee;--gold:#a56300;--shadow:0 14px 38px rgba(24,38,58,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}.shell{max-width:1160px;margin:auto;padding:24px}.top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:13px}.mark{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--blue);color:#fff;font-size:24px;font-weight:800}.eyebrow{color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.brand h1{font-size:22px;line-height:1.2;margin:2px 0 0}.top-note{color:var(--muted);font-size:13px;text-align:right}.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:22px;align-items:start}.panel,.question-card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.panel{padding:20px;position:sticky;top:18px}.panel h2{font-size:15px;margin:0 0 14px}.field-label{display:block;margin:15px 0 6px;font-size:12px;font-weight:750;color:var(--muted)}select,button,input,textarea{font:inherit}select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}.stat{border:1px solid var(--line);border-radius:12px;padding:11px}.stat b{display:block;font-size:22px;line-height:1.15}.stat span{color:var(--muted);font-size:11px}.progress-wrap{height:8px;border-radius:99px;background:#e8edf4;overflow:hidden}.progress-bar{height:100%;width:0;background:var(--blue);transition:width .2s}.actions{display:grid;gap:9px;margin-top:17px}.button{border:0;border-radius:10px;background:var(--blue);color:#fff;padding:11px 14px;font-weight:750;cursor:pointer;transition:background .15s,transform .1s}.button:hover{background:var(--blue-dark)}.button:active{transform:translateY(1px)}.button.secondary{background:#eef2f7;color:var(--ink)}.button.secondary:hover{background:#e1e8f0}.button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.button:disabled{opacity:.48;cursor:not-allowed}.source-note{font-size:12px;color:var(--muted);margin:18px 0 0}.main{min-width:0}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;color:var(--muted);font-size:13px}.toolbar .right{display:flex;align-items:center;gap:8px}.tiny{font-size:12px;padding:8px 11px}.question-card{overflow:hidden}.question-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:22px 26px 0}.badges{display:flex;gap:7px;flex-wrap:wrap}.badge{padding:5px 9px;border-radius:99px;background:var(--pale);color:#2949b6;font-size:11px;font-weight:800}.badge.kind{background:#eff3f7;color:#596a7d}.badge.difficulty{background:#e8f5ee;color:#176b48}.badge.difficulty.Intermedio{background:#fff3d7;color:#8b5a00}.badge.difficulty.Difícil{background:#ffebe8;color:#a3362c}.status-mini{font-size:12px;font-weight:750;color:var(--green)}.question-content{padding:18px 26px 25px}.question-content h2{margin:0 0 8px;font-size:23px;line-height:1.3}.instruction{color:var(--muted);margin:0 0 16px}.codebox{background:#111d2e;color:#eff5ff;border-radius:13px;padding:16px 18px;overflow:auto;margin:16px 0 18px;font:14px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap}.codebox:empty{display:none}.answers{margin-top:16px}.answer-input{width:100%;min-height:52px;padding:13px 14px;border:1.5px solid var(--line);border-radius:11px;outline:none;resize:vertical;background:#fff;color:var(--ink)}.answer-input:focus,select:focus{border-color:#718cf5;box-shadow:0 0 0 3px rgba(49,91,232,.12)}textarea.answer-input{min-height:92px;font:14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}.choice-list{display:grid;gap:9px}.choice{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:11px 13px;cursor:pointer;transition:.15s}.choice:hover{border-color:#9baef4;background:#fafbff}.choice.selected{border-color:var(--blue);background:var(--pale)}.choice input{accent-color:var(--blue);margin-top:5px}.choice code{font:14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap}.feedback{min-height:31px;margin:13px 0 0;font-weight:800}.feedback.ok{color:var(--green)}.feedback.no{color:var(--red)}.solution{margin-top:7px;padding:11px 12px;background:#fff;border:1px solid #f0c3bd;border-radius:10px;color:var(--ink);font-weight:500}.solution pre{margin:5px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}.submitrow{display:flex;justify-content:flex-end;margin-top:4px}.navrow{display:flex;justify-content:space-between;gap:10px;padding:16px 26px;border-top:1px solid var(--line);background:#fbfcfe}.navrow button{min-width:115px}.foot{text-align:center;color:var(--muted);font-size:12px;margin:17px 0}.mobile-actions{display:none}.empty{padding:60px 24px;text-align:center;color:var(--muted)}.empty strong{display:block;color:var(--ink);font-size:20px;margin-bottom:5px}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.panel{position:static}.panel-inner{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.panel-inner h2,.stats,.progress-wrap,.actions,.source-note{grid-column:1/-1}.top-note{display:none}}
+@media(max-width:560px){.shell{padding:13px}.brand h1{font-size:18px}.question-head,.question-content{padding-left:17px;padding-right:17px}.question-head{padding-top:17px}.question-content h2{font-size:20px}.navrow{padding:13px 17px}.navrow button{min-width:0;flex:1}.panel{padding:15px}.panel-inner{display:block}.toolbar{align-items:flex-start}.toolbar .right{flex-wrap:wrap;justify-content:flex-end}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <div class="brand"><div class="mark">{ }</div><div><div class="eyebrow">Repaso · Python</div><h1>Práctica de Informática</h1></div></div>
+    <div class="top-note">Basado en la CheatSheet de Lab04 · Dificultad alta: programas largos</div>
+  </header>
+  <div class="layout">
+    <aside class="panel">
+      <div class="panel-inner">
+        <h2>Tu práctica</h2>
+        <label class="field-label" for="topicFilter">Tema</label>
+        <select id="topicFilter"><option value="all">Todos los temas</option></select>
+        <label class="field-label" for="kindFilter">Tipo de ejercicio</label>
+        <select id="kindFilter"><option value="all">Todos los tipos</option></select>
+        <label class="field-label" for="difficultyFilter">Dificultad</label>
+        <select id="difficultyFilter"><option value="all">Todas las dificultades</option></select>
+        <div class="stats"><div class="stat"><b id="bankCount">0</b><span>preguntas disponibles</span></div><div class="stat"><b id="solvedCount">0</b><span>correctas</span></div></div>
+        <div class="progress-wrap" aria-label="Progreso"><div id="progressBar" class="progress-bar"></div></div>
+        <div class="actions">
+          <button class="button" id="randomBtn">↻ Pregunta aleatoria</button>
+          <button class="button secondary" id="shuffleBtn">⇅ Mezclar preguntas</button>
+          <button class="button ghost" id="resetBtn">Borrar mi progreso</button>
+        </div>
+        <p class="source-note">Los ejercicios se limitan a los tipos, operadores, estructuras y funciones incluidos en la CheatSheet de Lab04. Tus aciertos se guardan en este navegador.</p>
+      </div>
+    </aside>
+    <main class="main">
+      <div class="toolbar"><span id="positionLabel">Pregunta 1 de 1</span><div class="right"><span id="attemptLabel"></span><button class="button secondary tiny" id="jumpBtn">Elegir número</button></div></div>
+      <section class="question-card" id="questionCard" aria-live="polite"></section>
+      <div class="foot">Comprueba tu respuesta cuando estés listo. Si te equivocas, verás la solución después de comprobar.</div>
+    </main>
+  </div>
+</div>
+<script>
+(()=>{
+'use strict';
+const bank=[];
+const add=(topic,kind,title,instruction,code,answer,opts={})=>{if(opts.choices){opts={...opts};delete opts.choices;opts.mode=kind==='Predecir salida'?'output':'code';instruction=kind==='Predecir salida'?'Escribe la salida o el valor que obtienes al analizar el fragmento. Si hay varias líneas, respeta el orden.':kind==='Detectar y corregir'?'Escribe la corrección que hace que el programa cumpla lo que se pide.':'Escribe solo la expresión que completa correctamente el código.'}bank.push({id:`q${String(bank.length+1).padStart(3,'0')}`,topic,kind,title,instruction,code,answer,difficulty:opts.difficulty||(kind==='Escribir código'||kind==='Detectar y corregir'?'Intermedio':'Básico'),opts})};
+const trace=(topic,title,code,answer)=>add(topic,'Predecir salida',title,'¿Qué aparece exactamente en pantalla? Escribe la salida. Si hay varias líneas, pon una por línea.',code,answer,{mode:'output'});
+const choice=(topic,title,code,choices,correct)=>add(topic,'Predecir salida',title,'Elige la salida correcta.',code,correct,{choices});
+const mc=(topic,kind,title,instruction,code,choices,correct,difficulty='Difícil')=>add(topic,kind,title,instruction,code,correct,{choices,difficulty});
+const fix=(topic,title,code,answer,instruction='Reescribe solo la línea que contiene el error.')=>add(topic,'Detectar y corregir',title,instruction,code,answer,{mode:'code'});
+const fill=(topic,title,code,answer)=>add(topic,'Completar expresión',title,'Escribe únicamente la expresión que falta.',code,answer,{mode:'code'});
+const coding=(topic,title,instruction,code,answer)=>add(topic,'Escribir código',title,instruction,code,answer,{mode:'code'});
+const hardFix=(topic,title,code,answer)=>add(topic,'Detectar y corregir',title,'El fragmento tiene un error. Corrige la línea marcada y escribe únicamente esa línea.',code,answer,{mode:'code',difficulty:'Difícil'});
+const hardFixBlock=(topic,title,code,answer)=>add(topic,'Detectar y corregir',title,'El fragmento tiene varios errores. Escribe el programa corregido completo.',code,answer,{mode:'block',difficulty:'Difícil'});
+
+// Variables, tipos, operadores y cadenas (Lab01)
+[
+ ['Suma de parcelas','parcelas = 25\nparcelas += 18\nprint(parcelas)','43'],
+ ['División entera','print(127 // 25)','5'],['Resto de una división','print(127 % 25)','2'],['Potencia','print(3 ** 2 + 1)','10'],
+ ['Prioridad de operadores','print(2 + 2 * 3)','8'],['Paréntesis y prioridad','print((2 + 2) * 3)','12'],
+ ['Conversión a entero','temperatura = int("25")\nprint(temperatura + 3)','28'],
+ ['Conversión a real','lectura = float("6.5")\nprint(lectura * 2)','13.0'],
+ ['Longitud de texto','cultivo = "maiz"\nprint(len(cultivo))','4'],
+ ['Concatenar texto','cultivo = "maiz"\nvariedad = "dulce"\nprint(cultivo + " " + variedad)','maiz dulce'],
+ ['Repetir una cadena','print("ha" * 3)','hahaha'],
+ ['Comparar valores','print(8 != 8)','False'],['Comparar decimales','print(7.5 >= 7)','True'],
+ ['Operador lógico and','suelo_seco = True\ntemperatura_alta = False\nprint(suelo_seco and temperatura_alta)','False'],
+ ['Operador lógico or','plaga = False\nhelada = True\nprint(plaga or helada)','True'],
+ ['Operador lógico not','regado = False\nprint(not regado)','True'],
+ ['Pertenencia en una cadena','print("ma" in "maiz")','True'],
+ ['Cambio de valor','inventario = 1500\ninventario = 1750\nprint(inventario)','1750'],
+ ['Tipo entero','edad = 21\nprint(type(edad))',"<class 'int'>"],
+ ['Tipo cadena','nombre = "trigo"\nprint(type(nombre))',"<class 'str'>"],
+ ['Tipo booleano','riego = 4 > 2\nprint(type(riego))',"<class 'bool'>"],
+ ['Calcular volumen','ancho = 2\nlargo = 3\nprofundidad = 4\nprint(ancho * largo * profundidad)','24']
+].forEach(x=>trace('Variables, tipos y operadores',...x));
+[
+ ['Igualdad','a = 12\nb = 12\nprint(a == b)',['True','False'],'True'],
+ ['Rango inclusivo','edad = 40\nprint(18 <= edad <= 40)',['True','False'],'True'],
+ ['División normal','print(9 / 2)',['4','4.5','4.0'],'4.5'],
+ ['Conversión a texto','hectareas = 45\nprint("Total: " + str(hectareas))',['Total: 45','Total: hectareas','Error'],'Total: 45'],
+ ['Comparación encadenada','ph = 7\nprint(ph < 7)',['True','False','7'],'False'],
+ ['Una palabra dentro de otra','print("go" not in "trigo")',['True','False'],'False'],
+ ['Módulo con valor exacto','print(20 % 5)',['0','4','5'],'0'],
+ ['Función len','print(len("UPNA"))',['3','4','5'],'4']
+].forEach(x=>choice('Variables, tipos y operadores',...x));
+[
+ ['Texto con comillas','mensaje = ¡Sistema activo!','mensaje = "¡Sistema activo!"'],
+ ['Decimal en Python','ph = 6,8','ph = 6.8'],
+ ['Convertir entrada textual a entero','edad = input("Edad: ")\nprint(edad + 1)','edad = int(input("Edad: "))'],
+ ['Unir texto y número','print("Hectáreas: " + hectareas)','print("Hectáreas: " + str(hectareas))'],
+ ['Operador de igualdad','print(ph = 7)','print(ph == 7)'],
+ ['Operador de asignación combinada','inventario + 10','inventario += 10'],
+ ['Nombre de variable','2parcelas = 12','parcelas_2 = 12'],
+ ['Paréntesis de print','print "Hola"','print("Hola")']
+].forEach(x=>fix('Variables, tipos y operadores',...x));
+[
+ ['Expresión de suma','a = 12\nb = 8\nresultado = ___\nprint(resultado)','a + b'],
+ ['Resto','resto = 127 ___ 25','%'],['Comparar igualdad','iguales = ph_a ___ ph_b','=='],
+ ['Convertir a cadena','mensaje = "Total: " + ___(hectareas)','str'],
+ ['Comprobar que una parcela no se regó','necesita_riego = ___ regado','not'],
+ ['Longitud de una lista','cantidad = ___(parcelas)','len']
+].forEach(x=>fill('Variables, tipos y operadores',...x));
+
+// Condicionales y funciones (Lab02–Lab03)
+[
+ ['Clasificar pH ácido','ph = 5.5\nif ph < 7:\n    print("acido")\nelse:\n    print("basico")','acido'],
+ ['Rama alternativa','humedad = 35\nif humedad > 40:\n    print("adecuada")\nelse:\n    print("riego")','riego'],
+ ['Rama elif','temperatura = 30\nif temperatura < 15:\n    print("frio")\nelif temperatura <= 30:\n    print("normal")\nelse:\n    print("calor")','normal'],
+ ['Límite superior abierto','dias = 18\nif dias < 12:\n    print("fresco")\nelif dias < 18:\n    print("refrigerado")\nelif dias < 30:\n    print("congelado")\nelse:\n    print("conserva")','congelado'],
+ ['Calcular beneficio','ingreso = 3000\ncoste = 1000\nprint(ingreso - coste)','2000'],
+ ['Función con return','def doble(numero):\n    return numero * 2\nprint(doble(6))','12'],
+ ['Función booleana','def es_acido(ph):\n    return ph < 7\nprint(es_acido(7))','False'],
+ ['Función con dos argumentos','def area(largo, ancho):\n    return largo * ancho\nprint(area(8, 3))','24'],
+ ['Llamar a una función','def sumar(a, b):\n    return a + b\nresultado = sumar(4, 9)\nprint(resultado)','13'],
+ ['Devolver el valor calculado','def quintales(kilos):\n    return kilos / 100\nprint(quintales(500))','5.0'],
+ ['Condición doble','ph = 6\ntemperatura = 12\nprint(ph < 7 and temperatura <= 15)','True'],
+ ['Condición con or','ph = 8\ntemperatura = 35\nprint(ph < 7 or temperatura > 30)','True'],
+ ['Comparar dos parcelas','ph_a = 5.5\nph_b = 8.2\nif ph_a < 7 and ph_b > 7:\n    print("una acida y otra basica")\nelse:\n    print("mismo grupo")','una acida y otra basica'],
+ ['Seleccionar mayor','a = 17\nb = 21\nif a > b:\n    print(a)\nelse:\n    print(b)','21'],
+ ['Revisar edad inclusiva','edad = 18\nif edad >= 18 and edad <= 40:\n    print("cumple")\nelse:\n    print("no cumple")','cumple'],
+ ['Validar negativos','medida = -2\nif medida < 0:\n    print("invalida")\nelse:\n    print("valida")','invalida'],
+ ['Función con varias ramas','def nivel(t):\n    if t < 15:\n        return "frio"\n    elif t <= 30:\n        return "normal"\n    else:\n        return "calor"\nprint(nivel(31))','calor'],
+ ['Función que devuelve una resta','def disponible(total, reserva):\n    return total - reserva\nprint(disponible(50, 18))','32']
+].forEach(x=>trace('Condicionales y funciones',...x));
+[
+ ['Indentación del bloque','if ph < 7:\nprint("acido")','    print("acido")'],
+ ['Comparar con un umbral','if humedad = 40:\n    print("adecuada")','if humedad > 40:'],
+ ['Condición con dos límites','if edad >= 18 edad <= 40:\n    print("cumple")','if edad >= 18 and edad <= 40:'],
+ ['Cabecera de función','def area(largo ancho):','def area(largo, ancho):'],
+ ['Devolver resultado','def doble(n):\n    n * 2','    return n * 2'],
+ ['Llamada a función','resultado = area(4)','resultado = area(4, 5)'],
+ ['Dos puntos al final','if temperatura > 30\n    print("calor")','if temperatura > 30:'],
+ ['Rama alternativa','else temperatura > 30:\n    print("calor")','elif temperatura > 30:'],
+ ['Comprobar si no es neutro','if ph < 7 and ph > 7:\n    print("no neutro")','if ph < 7 or ph > 7:']
+].forEach(x=>fix('Condicionales y funciones',...x));
+[
+ ['Condición de ácido','if ph ___ 7:','<'],['Condición inclusiva','if temperatura ___ 30:','<='],
+ ['Combinar dos requisitos','if ph < 7 ___ temperatura < 15:','and'],
+ ['Expresión de área','return largo ___ ancho','*'],
+ ['Resultado de función','def coste(kg, precio):\n    ___ kg * precio','return'],
+ ['Rama intermedia','if edad < 18:\n    print("menor")\n___ edad <= 40:\n    print("joven")','elif'],
+ ['Límite de humedad','adecuada = humedad ___ 40','>']
+].forEach(x=>fill('Condicionales y funciones',...x));
+[
+ ['Expresión booleana de riego','Escribe la asignación que vale True solo si el suelo está seco y la temperatura es alta.','suelo_seco = True\ntemperatura_alta = True','suelo_seco and temperatura_alta'],
+ ['Función de área','Completa la función para devolver el área de un rectángulo.','def area(largo, ancho):\n    ___','return largo * ancho'],
+ ['Comparación dentro de rango','Escribe la condición para que edad esté entre 18 y 40, ambos incluidos.','if ___:\n    print("cumple")','edad >= 18 and edad <= 40'],
+].forEach(x=>coding('Condicionales y funciones',...x));
+
+// Interacción y validación de texto (Lab03)
+[
+ ['isdigit','print("123".isdigit())','True'],['isdigit con signo','print("-5".isdigit())','False'],
+ ['isalpha','print("Trigo".isalpha())','True'],['isalnum','print("Lote7".isalnum())','True'],
+ ['isupper','print("UPNA".isupper())','True'],['islower','print("Maiz".islower())','False'],
+ ['count','print("tomate".count("t"))','2'],['upper','print("trigo".upper())','TRIGO'],
+ ['lower','print("MAIZ".lower())','maiz'],['capitalize','print("invernadero".capitalize())','Invernadero'],
+ ['split','print("uno dos tres".split(" "))',"['uno', 'dos', 'tres']"],
+ ['Entrada como cadena','respuesta = input("Dato: ")\nprint(type(respuesta))',"<class 'str'>"]
+].forEach(x=>trace('Interacción y validación',...x));
+[
+ ['isdigit correcto','if str.isdigit(codigo):\n    print("ok")','if codigo.isdigit():\n    print("ok")'],
+ ['Convertir tras validar','if numero.isdigit():\n    numero = float(numero)','if numero.isdigit():\n    numero = int(numero)'],
+ ['Longitud mínima','if len(clave) > 8:\n    print("valida")','if len(clave) >= 8:\n    print("valida")'],
+ ['Llamar input','numero = int input("Número: ")','numero = int(input("Número: "))'],
+ ['Método al texto','if str.isalpha(codigo):','if codigo.isalpha():'],
+ ['Método isalnum','if clave.isalnum(clave):','if clave.isalnum():']
+].forEach(x=>fix('Interacción y validación',...x));
+[
+ ['Validar dígitos','if numero.___():\n    numero = int(numero)','isdigit'],
+ ['Número de caracteres','if len(codigo) ___ 8:','>='],
+ ['Pedir dato','codigo = ___("Escribe el código: ")','input'],
+ ['Convertir texto a real','temperatura = ___(dato)','float'],
+ ['Comprobar solo letras y números','if codigo.___():\n    print("correcto")','isalnum']
+].forEach(x=>fill('Interacción y validación',...x));
+
+// Listas, recorridos y bucles for (Lab04)
+[
+ ['Acceder al primer elemento','parcelas = [12, 18, 25]\nprint(parcelas[0])','12'],
+ ['Índice negativo','meses = ["enero", "febrero", "marzo"]\nprint(meses[-1])','marzo'],
+ ['Añadir al final','valores = [2, 4]\nvalores.append(6)\nprint(valores)', '[2, 4, 6]'],
+ ['Insertar en una posición','valores = [2, 6]\nvalores.insert(1, 4)\nprint(valores)','[2, 4, 6]'],
+ ['Eliminar por valor','cultivos = ["trigo", "maiz", "vid"]\ncultivos.remove("maiz")\nprint(cultivos)',"['trigo', 'vid']"],
+ ['Eliminar por índice','valores = [3, 5, 7]\ndel valores[1]\nprint(valores)','[3, 7]'],
+ ['Longitud de lista','produccion = [8, 9, 10, 11]\nprint(len(produccion))','4'],
+ ['Recorrer una lista','for cultivo in ["trigo", "maiz"]:\n    print(cultivo)','trigo\nmaiz'],
+ ['Acumulador en for','total = 0\nfor valor in [3, 4, 5]:\n    total += valor\nprint(total)','12'],
+ ['Contar elementos con for','contador = 0\nfor valor in [9, 7, 5, 3]:\n    contador += 1\nprint(contador)','4'],
+ ['Contar valores positivos','contador = 0\nfor valor in [-2, 4, 0, 7]:\n    if valor > 0:\n        contador += 1\nprint(contador)','2'],
+ ['Sumar solo valores mayores que 5','total = 0\nfor valor in [2, 6, 8]:\n    if valor > 5:\n        total += valor\nprint(total)','14'],
+ ['Recorrer range de tres','for numero in range(3):\n    print(numero)','0\n1\n2'],
+ ['range con inicio','for numero in range(2, 5):\n    print(numero)','2\n3\n4'],
+ ['range con salto','for numero in range(0, 6, 2):\n    print(numero)','0\n2\n4'],
+ ['Multiplicar dentro del bucle','for numero in [2, 4, 6]:\n    print(numero * 2)','4\n8\n12'],
+ ['Acumular producción mensual','total = 0\nfor mes in [10, 12, 8]:\n    total = total + mes\nprint(total)','30'],
+ ['Lista nueva por iteración','dobles = []\nfor numero in [1, 3, 5]:\n    dobles.append(numero * 2)\nprint(dobles)','[2, 6, 10]'],
+ ['Calcular media con contador','total = 0\ncontador = 0\nfor valor in [4, 6, 8]:\n    total += valor\n    contador += 1\nprint(total / contador)','6.0'],
+ ['Máximo con comparación','mayor = 0\nfor valor in [3, 9, 5]:\n    if valor > mayor:\n        mayor = valor\nprint(mayor)','9'],
+ ['Acumular solo meses pares','total = 0\nfor mes in [1, 2, 3, 4]:\n    if mes % 2 == 0:\n        total += mes\nprint(total)','6'],
+ ['for anidado sencillo','for fila in [1, 2]:\n    for columna in [1, 2]:\n        print(fila + columna)','2\n3\n3\n4'],
+ ['Actualizar valor por iteración','x = 1\nfor valor in [2, 3]:\n    x += valor\nprint(x)','6'],
+ ['Contar letras con bucle','contador = 0\nfor letra in "maiz":\n    contador += 1\nprint(contador)','4'],
+ ['Comprobar pertenencia','cultivos = ["trigo", "maiz"]\nprint("maiz" in cultivos)','True']
+].forEach(x=>trace('Listas y bucles for',...x));
+[
+ ['¿Qué imprime el bucle?','for x in [1, 2, 3]:\n    print(x + 1)',['2\n3\n4','1\n2\n3','3\n4\n5'],'2\n3\n4'],
+ ['¿Cuántas vueltas?','for i in range(2, 7):\n    print(i)',['4','5','6'],'5'],
+ ['¿Qué queda en total?','total = 1\nfor x in [2, 3]:\n    total *= x\nprint(total)',['5','6','1'],'6'],
+ ['¿Qué lista resulta?','datos = [1, 2]\ndatos.extend([3, 4])\nprint(datos)',['[1, 2, 3, 4]','[1, 2, [3, 4]]','[3, 4, 1, 2]'],'[1, 2, 3, 4]'],
+ ['¿Qué devuelve contar?','def contar(lista):\n    total = 0\n    for x in lista:\n        total += 1\n    return total\nprint(contar([5, 8, 9]))',['2','3','22'],'3'],
+ ['¿Cuántos elementos quedan?','valores = [1, 2, 3, 4]\nvalores.remove(3)\nprint(len(valores))',['2','3','4'],'3'],
+ ['¿Qué suma?','total = 0\nfor x in range(1, 4):\n    total += x\nprint(total)',['3','6','10'],'6'],
+ ['¿Qué valor imprime?','valores = [5, 7, 9]\nfor x in valores:\n    if x > 6:\n        print(x)',['5\n7\n9','7\n9'],'7\n9'],
+].forEach(x=>choice('Listas y bucles for',...x));
+[
+ ['Dos puntos en for','for valor in lista\n    print(valor)','for valor in lista:'],
+ ['Recorrido de lista','for i in range(lista):\n    print(lista[i])','for valor in lista:\n    print(valor)'],
+ ['Añadir al final de una lista','valores = [1, 2]\nvalores.add(3)','valores.append(3)'],
+ ['Longitud de lista','cantidad = lista.length()','cantidad = len(lista)'],
+ ['Eliminar posición','del lista(2)','del lista[2]'],
+ ['Bucle sobre elementos','for valor of lista:\n    print(valor)','for valor in lista:\n    print(valor)'],
+ ['Inicializar acumulador','for valor in lista:\n    total += valor','total = 0\nfor valor in lista:\n    total += valor'],
+ ['Llamar append','lista.append = 5','lista.append(5)'],
+ ['Rango de cero a cuatro','for i in range(5):\n    print(i)','for i in range(5):\n    print(i)'],
+ ['Sangría del bucle','for valor in lista:\nprint(valor)','for valor in lista:\n    print(valor)'],
+ ['Condición para valor positivo','if valor > 0\n    total += valor','if valor > 0:\n    total += valor'],
+ ['Contar sin len','contador = 0\nfor valor in lista:\n    contador = valor','contador = 0\nfor valor in lista:\n    contador += 1']
+].forEach(x=>fix('Listas y bucles for',...x));
+[
+ ['Primera posición','print(lista[___])','0'],['Última posición','print(lista[___])  # último elemento','-1'],
+ ['Añadir al final','produccion.___(12)','append'],['Número de elementos','cantidad = ___(produccion)','len'],
+ ['Inicio de acumulación','___ = 0\nfor valor in lista:\n    total += valor','total'],
+ ['Recorrer la lista','for cultivo ___ cultivos:\n    print(cultivo)','in'],
+ ['Recorrer cinco números','for numero in ___(5):\n    print(numero)','range'],
+ ['Sumar cada elemento','total = 0\nfor valor in lista:\n    total ___ valor','+='],
+ ['Eliminar el tercer elemento','del cultivos[___]','2'],
+ ['Crear lista vacía','nuevos = ___','[]'],
+ ['Añadir cada doble','for numero in datos:\n    dobles.append(numero ___ 2)','*'],
+ ['Contador de elementos','for valor in lista:\n    contador ___ 1','+='],
+ ['Insertar en posición','lista.insert(___, "maiz")  # al inicio','0'],
+ ['Comprobar si está','if "trigo" ___ cultivos:','in'],
+ ['Acumular solo positivos','if valor > 0:\n    total ___ valor','+=']
+].forEach(x=>fill('Listas y bucles for',...x));
+[
+ ['Recorrer y sumar','Escribe un bucle que sume todos los valores de la lista en total.','produccion = [8, 12, 10]\ntotal = 0\n___','for valor in produccion:\n    total += valor'],
+ ['Contar elementos','Escribe un bucle que cuente cuántos elementos tiene datos sin usar len.','datos = [4, 6, 8]\ncontador = 0\n___','for valor in datos:\n    contador += 1'],
+ ['Crear una lista de dobles','Completa el bucle para guardar en dobles el doble de cada número.','datos = [2, 3, 4]\ndobles = []\n___','for numero in datos:\n    dobles.append(numero * 2)'],
+ ['Encontrar máximo positivo','Completa el código para encontrar el mayor valor de datos (todos son positivos).','datos = [5, 11, 8]\nmayor = datos[0]\n___','for valor in datos:\n    if valor > mayor:\n        mayor = valor'],
+ ['Contar aprobados','Escribe el bloque que cuente cuántas notas son al menos 5.','notas = [4, 5, 8]\naprobados = 0\n___','for nota in notas:\n    if nota >= 5:\n        aprobados += 1'],
+ ['Recorrido con range','Completa el bucle para que muestre 0, 1, 2 y 3, cada uno en una línea.','___','for numero in range(4):\n    print(numero)'],
+ ['Producción anual','Escribe una función que reciba una lista y devuelva la suma de todos sus valores usando for.','def produccion_anual(meses):\n    total = 0\n    ___','for valor in meses:\n        total += valor\n    return total'],
+ ['Lista de producciones combinadas','Completa el bucle para construir una lista con la suma por posición de dos listas del mismo tamaño.','a = [2, 4]\nb = [5, 3]\nresultado = []\nfor i in range(len(a)):\n    ___','resultado.append(a[i] + b[i])'],
+].forEach(x=>coding('Listas y bucles for',...x));
+
+// Bloque extra de preguntas para practicar con frecuencia los contenidos del examen.
+[
+ ['Suma con variables','a = 14\nb = 9\nprint(a + b)',['21','23','25'],'23'],
+ ['División entera','print(37 // 6)',['5','6','6.1'],'6'],
+ ['Resto','print(37 % 6)',['1','5','6'],'1'],
+ ['Potencia y suma','print(2 ** 3 + 2)',['10','12','16'],'10'],
+ ['Orden de operaciones','print(10 - 2 * 3)',['24','4','8'],'4'],
+ ['Resultado de división','print(15 / 4)',['3','3.75','3.0'],'3.75'],
+ ['Tipo de un decimal','dato = 8 / 2\nprint(type(dato))',["<class 'int'>","<class 'float'>","<class 'str'>"],"<class 'float'>"],
+ ['Comparación igual','print(6 == 6.0)',['True','False','Error'],'True'],
+ ['Comparación distinto','print(6 != 9)',['True','False','9'],'True'],
+ ['Concatenación','print("Hola" + " " + "UPNA")',['HolaUPNA','Hola UPNA','Hola + UPNA'],'Hola UPNA'],
+ ['Repetición de cadena','print("ab" * 2)',['abab','ab2','aabb'],'abab'],
+ ['Pertenencia en texto','print("go" in "trigo")',['True','False','Error'],'True'],
+ ['Negación','activo = False\nprint(not activo)',['True','False','0'],'True'],
+ ['Conversión a texto','n = 12\nprint("N=" + str(n))',['N=12','N=n','Error'],'N=12'],
+ ['Longitud de cadena','print(len("invernadero"))',['10','11','12'],'11'],
+ ['Acumulación combinada','n = 5\nn += 3\nprint(n)',['2','8','53'],'8'],
+ ['Valor final reasignado','x = 4\nx = x * 3\nprint(x)',['7','12','43'],'12'],
+ ['Resultado de and','print(True and False)',['True','False','0'],'False'],
+ ['Resultado de or','print(False or True)',['True','False','1'],'True'],
+ ['Número real escrito correctamente','¿Cuál de estos valores es un float válido en Python?',['6,8','6.8','"6.8"'],'6.8'],
+].forEach(x=>choice('Variables, tipos y operadores',...x));
+[
+ ['Humedad exactamente en el límite','humedad = 40\nif humedad > 40:\n    print("adecuada")\nelse:\n    print("riego")',['adecuada','riego','40'],'riego'],
+ ['Temperatura igual a 30','t = 30\nif t < 15:\n    print("frio")\nelif t <= 30:\n    print("normal")\nelse:\n    print("calor")',['frio','normal','calor'],'normal'],
+ ['Edad en el límite superior','edad = 40\nprint(18 <= edad <= 40)',['True','False','40'],'True'],
+ ['pH neutro','ph = 7\nif ph < 7:\n    print("acido")\nelif ph > 7:\n    print("basico")\nelse:\n    print("neutro")',['acido','basico','neutro'],'neutro'],
+ ['Comparación con and','print(5 < 7 and 12 < 15)',['True','False','12'],'True'],
+ ['Comparación con or','print(5 > 7 or 12 < 15)',['True','False','Error'],'True'],
+ ['Elegir el mayor','a = 18\nb = 12\nif a > b:\n    print(a)\nelse:\n    print(b)',['12','18','30'],'18'],
+ ['Rama elif','n = 5\nif n < 0:\n    print("negativo")\nelif n < 10:\n    print("pequeno")\nelse:\n    print("grande")',['negativo','pequeno','grande'],'pequeno'],
+ ['Función que duplica','def doble(n):\n    return n * 2\nprint(doble(7))',['9','14','27'],'14'],
+ ['Función con comparación','def es_mayor(n):\n    return n > 10\nprint(es_mayor(10))',['True','False','10'],'False'],
+ ['Área de rectángulo','def area(a, b):\n    return a * b\nprint(area(5, 4))',['9','20','54'],'20'],
+ ['Descuento según rama','kg = 800\nif kg > 1000:\n    descuento = 5\nelse:\n    descuento = 0\nprint(descuento)',['0','5','800'],'0'],
+ ['Condición para pH ácido','ph = 6.9\nprint(ph < 7)',['True','False','6.9'],'True'],
+ ['Varias ramas y límite','dias = 30\nif dias < 12:\n    print("fresco")\nelif dias < 18:\n    print("refrigerado")\nelif dias < 30:\n    print("congelado")\nelse:\n    print("conserva")',['fresco','congelado','conserva'],'conserva'],
+].forEach(x=>choice('Condicionales y funciones',...x));
+[
+ ['Solo dígitos','print("2026".isdigit())',['True','False','Error'],'True'],
+ ['Un signo impide isdigit','print("-12".isdigit())',['True','False','12'],'False'],
+ ['Solo letras','print("Trigo".isalpha())',['True','False','Error'],'True'],
+ ['Letras y números','print("Lote25".isalnum())',['True','False','25'],'True'],
+ ['Mayúsculas','print("UPNA".isupper())',['True','False','UPNA'],'True'],
+ ['Contar letras','print("tomate".count("t"))',['1','2','3'],'2'],
+ ['Pasar a minúsculas','print("MAIZ".lower())',['MAIZ','maiz','Maiz'],'maiz'],
+ ['Tipo de input','dato = input("Escribe: ")\nprint(type(dato))',["<class 'str'>","<class 'int'>","Depende de lo que se escriba"],"<class 'str'>"],
+].forEach(x=>choice('Interacción y validación',...x));
+[
+ ['Primer índice','datos = [8, 12, 16]\nprint(datos[0])',['8','12','16'],'8'],
+ ['Último índice','datos = [8, 12, 16]\nprint(datos[-1])',['8','12','16'],'16'],
+ ['Índice del medio','datos = [8, 12, 16]\nprint(datos[1])',['8','12','16'],'12'],
+ ['append cambia la lista','datos = [1, 2]\ndatos.append(3)\nprint(datos)',['[1, 2, 3]','[3, 1, 2]','[1, 2]'],'[1, 2, 3]'],
+ ['append no devuelve la lista','datos = [1, 2]\nprint(datos.append(3))',['[1, 2, 3]','3','None'],'None'],
+ ['extend añade elementos','datos = [1]\ndatos.extend([2, 3])\nprint(datos)',['[1, 2, 3]','[1, [2, 3]]','[2, 3, 1]'],'[1, 2, 3]'],
+ ['insert en posición cero','datos = [2, 3]\ndatos.insert(0, 1)\nprint(datos)',['[1, 2, 3]','[2, 3, 1]','[2, 1, 3]'],'[1, 2, 3]'],
+ ['remove elimina por valor','datos = [2, 4, 6]\ndatos.remove(4)\nprint(datos)',['[2, 6]','[4, 6]','[2, 4]'],'[2, 6]'],
+ ['del elimina por posición','datos = [2, 4, 6]\ndel datos[0]\nprint(datos)',['[2, 6]','[4, 6]','[2, 4]'],'[4, 6]'],
+ ['Tamaño de una lista','datos = [2, 4, 6, 8]\nprint(len(datos))',['3','4','8'],'4'],
+ ['Recorrer lista en orden','for x in [3, 1, 2]:\n    print(x)',['1\n2\n3','3\n1\n2','3 1 2'],'3\n1\n2'],
+ ['range empieza en cero','for x in range(3):\n    print(x)',['0\n1\n2','1\n2\n3','0\n1\n2\n3'],'0\n1\n2'],
+ ['range no incluye el final','for x in range(2, 5):\n    print(x)',['2\n3\n4','2\n3\n4\n5','3\n4\n5'],'2\n3\n4'],
+ ['range con paso dos','for x in range(1, 7, 2):\n    print(x)',['1\n3\n5','1\n2\n3\n4\n5\n6','2\n4\n6'],'1\n3\n5'],
+ ['Suma en un bucle','total = 0\nfor x in [2, 5, 7]:\n    total += x\nprint(total)',['12','14','57'],'14'],
+ ['Contar iteraciones','veces = 0\nfor x in [4, 8, 12, 16]:\n    veces += 1\nprint(veces)',['3','4','40'],'4'],
+ ['Filtrar pares','total = 0\nfor x in [1, 2, 3, 4]:\n    if x % 2 == 0:\n        total += x\nprint(total)',['4','6','10'],'6'],
+ ['Sumar mayores que cinco','total = 0\nfor x in [3, 6, 9]:\n    if x > 5:\n        total += x\nprint(total)',['3','15','18'],'15'],
+ ['Lista acumulada','dobles = []\nfor x in [2, 3]:\n    dobles.append(x * 2)\nprint(dobles)',['[2, 3]','[4, 6]','[4, 3]'],'[4, 6]'],
+ ['Valor tras varias vueltas','n = 2\nfor x in [3, 4]:\n    n += x\nprint(n)',['7','9','24'],'9'],
+ ['Contar valores positivos','cuenta = 0\nfor x in [-1, 0, 5, 8]:\n    if x > 0:\n        cuenta += 1\nprint(cuenta)',['1','2','3'],'2'],
+ ['Bucle anidado','for a in [1, 2]:\n    for b in [1, 2]:\n        print(a * b)',['1\n2\n2\n4','1\n2\n3\n4','2\n4'],'1\n2\n2\n4'],
+ ['Iterar caracteres','for letra in "sol":\n    print(letra)',['s\no\nl','sol','l\no\ns'],'s\no\nl'],
+ ['Total de cuatro meses','total = 0\nfor x in [5, 7, 9, 11]:\n    total = total + x\nprint(total)',['30','32','35'],'32'],
+ ['Comparar y actualizar máximo','mayor = 4\nfor x in [7, 3, 9]:\n    if x > mayor:\n        mayor = x\nprint(mayor)',['4','7','9'],'9'],
+ ['Calcular media manualmente','total = 0\nfor x in [3, 6, 9]:\n    total += x\nprint(total / 3)',['6','18','6.0'],'6.0'],
+ ['Pertenencia en lista','cultivos = ["trigo", "maiz"]\nprint("vid" in cultivos)',['True','False','vid'],'False'],
+ ['Eliminar solo la primera coincidencia','datos = [2, 4, 2]\ndatos.remove(2)\nprint(datos)',['[4, 2]','[2, 4]','[4]'],'[4, 2]'],
+ ['Cantidad de veces que aparece','datos = [1, 1, 2]\ncuenta = 0\nfor x in datos:\n    if x == 1:\n        cuenta += 1\nprint(cuenta)',['1','2','3'],'2'],
+].forEach(x=>choice('Listas y bucles for',...x));
+
+// Preguntas difíciles: fragmentos más largos y detalles pensados para detectar despistes.
+[
+ ['La lista compartida','parcelas = [4, 7]\nreferencia = parcelas\nreferencia.append(9)\nparcelas[0] = parcelas[0] + 1\nprint(referencia)',['[4, 7, 9]','[5, 7, 9]','[5, 7]'],'[5, 7, 9]'],
+ ['Insertar usando los extremos','datos = [3, 8]\nvalor = datos[0] + datos[1]\ndatos.insert(1, valor)\nprint(datos)',['[3, 11, 8]','[11, 3, 8]','[3, 8, 11]'],'[3, 11, 8]'],
+ ['Eliminar una sola coincidencia','datos = [2, 5, 2, 7]\ndatos.remove(2)\nprint(datos)',['[5, 2, 7]','[5, 7]','[2, 5, 7]'],'[5, 2, 7]'],
+ ['La suma cambia durante el recorrido','datos = [2, 5, 8]\ntotal = 0\nfor valor in datos:\n    if valor > 4:\n        total += valor\n    else:\n        total += 1\nprint(total)',['14','15','16'],'14'],
+ ['El contador no se reinicia','cuenta = 0\nfor grupo in [[1, 2], [3, 4, 5]]:\n    for valor in grupo:\n        cuenta += 1\nprint(cuenta)',['2','3','5'],'5'],
+ ['Dos sumas por cada valor','total = 0\nfor a in [1, 3]:\n    for b in [2, 4]:\n        total += a + b\nprint(total)',['10','14','20'],'20'],
+ ['Acumulador con paridad','total = 0\nfor n in range(1, 6):\n    if n % 2 == 0:\n        total += n * 2\n    else:\n        total += n\nprint(total)',['19','21','23'],'21'],
+ ['El final de range no se incluye','total = 0\nfor n in range(2, 6):\n    total += n\nprint(total)',['14','15','20'],'14'],
+ ['Índices y valores','datos = [6, 10, 14]\ntotal = 0\nfor i in range(len(datos)):\n    total += datos[i] - i\nprint(total)',['27','28','30'],'27'],
+ ['Modificar la lista al recorrerla','datos = [1, 2, 3, 4]\nfor valor in datos:\n    if valor % 2 == 0:\n        datos.remove(valor)\nprint(datos)',['[1, 3]','[1, 3, 4]','[1, 2, 3, 4]'],'[1, 3]'],
+ ['Una función modifica y devuelve','def actualizar(lista):\n    lista.append(lista[0] + lista[-1])\n    return len(lista)\ndatos = [2, 5, 8]\ncantidad = actualizar(datos)\nprint(cantidad, datos)',['4 [2, 5, 8, 10]','3 [2, 5, 8, 10]','4 [2, 5, 8]'],'4 [2, 5, 8, 10]'],
+ ['El return termina la función','def revisar(n):\n    if n > 5:\n        return "alto"\n    print("revisado")\n    return "bajo"\nprint(revisar(7))',['revisado\nalto','alto','bajo'],'alto'],
+ ['Llamada repetida a función','def sumar(a, b):\n    return a + b\nresultado = sumar(2, 3)\nresultado = sumar(resultado, 4)\nprint(resultado)',['7','9','234'],'9'],
+ ['Dos if independientes','n = 12\nif n > 5:\n    print("A")\nif n > 10:\n    print("B")\nelse:\n    print("C")',['A\nB','A\nC','B'],'A\nB'],
+ ['if frente a elif','n = 12\nif n > 5:\n    print("A")\nelif n > 10:\n    print("B")\nelse:\n    print("C")',['A','A\nB','B'],'A'],
+ ['Límite exacto de temperatura','t = 15\nif t < 15:\n    print("frio")\nelif t <= 30:\n    print("normal")\nelse:\n    print("calor")',['frio','normal','calor'],'normal'],
+ ['Límite exacto de caducidad','dias = 12\nif dias < 12:\n    print("fresco")\nelif dias < 18:\n    print("refrigerado")\nelif dias < 30:\n    print("congelado")\nelse:\n    print("conserva")',['fresco','refrigerado','congelado'],'refrigerado'],
+ ['Comparar pH sin redondear','ph = 6.95\nif ph < 7:\n    print("acido")\nelse:\n    print("no acido")',['acido','no acido','neutro'],'acido'],
+ ['Una condición no cubre igualdad','edad = 18\nif edad > 18 and edad < 40:\n    print("entra")\nelse:\n    print("fuera")',['entra','fuera','18'],'fuera'],
+ ['La función devuelve un booleano','def es_optimo(t):\n    return t >= 10 and t <= 15\na = es_optimo(10)\nb = es_optimo(15)\nprint(a, b)',['True True','True False','False True'],'True True'],
+ ['Prioridad de and y or','a = False\nb = True\nc = True\nprint(a or b and c)',['False','True','Error'],'True'],
+ ['Cambiar el acumulador antes de sumar','total = 10\nfor n in [2, 3]:\n    total = total - n\n    total += 1\nprint(total)',['7','8','9'],'7'],
+ ['Una lista nueva en cada llamada','def ampliar(lista):\n    lista.append(4)\n    return lista\na = [1, 2]\nb = ampliar(a)\nb.append(5)\nprint(a)',['[1, 2]','[1, 2, 4]','[1, 2, 4, 5]'],'[1, 2, 4, 5]'],
+ ['El valor que queda en la variable del for','numero = 99\nfor numero in range(3):\n    resultado = numero * 2\nprint(numero, resultado)',['2 4','3 4','99 4'],'2 4'],
+ ['Contar solo si se cumplen ambas','datos = [4, 7, 10, 13]\ncuenta = 0\nfor n in datos:\n    if n > 5 and n < 13:\n        cuenta += 1\nprint(cuenta)',['1','2','3'],'2'],
+ ['Acumular valores de posiciones pares','datos = [5, 10, 15, 20, 25]\ntotal = 0\nfor i in range(len(datos)):\n    if i % 2 == 0:\n        total += datos[i]\nprint(total)',['40','45','60'],'45'],
+ ['append dentro de una función','def agregar(lista, valor):\n    lista.append(valor)\n    return lista[0]\ndatos = [8]\nprimero = agregar(datos, 3)\nprint(primero, len(datos))',['8 1','8 2','3 2'],'8 2'],
+ ['Dos listas se suman por posición','a = [2, 5, 8]\nb = [1, 3, 4]\nresultado = []\nfor i in range(len(a)):\n    resultado.append(a[i] + b[i])\nprint(resultado)',['[3, 8, 12]','[3, 8, 11]','[2, 5, 8, 1, 3, 4]'],'[3, 8, 12]'],
+ ['Diferencia entre lista original y alias','a = [1, 4]\nb = a\na = a + [7]\nb.append(9)\nprint(a, b)',['[1, 4, 7] [1, 4, 9]','[1, 4, 7, 9] [1, 4, 7, 9]','[1, 4, 9] [1, 4, 9]'],'[1, 4, 7] [1, 4, 9]'],
+ ['No hay una vuelta para el valor final','total = 0\nfor n in range(1, 5):\n    total += n * n\nprint(total)',['30','55','100'],'30'],
+ ['El máximo se actualiza solo al superar','mayor = 6\nfor n in [4, 6, 5, 9, 7]:\n    if n > mayor:\n        mayor = n\nprint(mayor)',['6','7','9'],'9'],
+ ['Suma de los valores no repetidos consecutivos','datos = [1, 1, 2, 2, 3]\ntotal = 0\nanterior = 0\nfor n in datos:\n    if n != anterior:\n        total += n\n    anterior = n\nprint(total)',['3','6','9'],'6'],
+ ['Validar antes de convertir','dato = "007"\nif dato.isdigit():\n    numero = int(dato)\n    print(numero + 1)\nelse:\n    print("error")',['8','0071','error'],'8'],
+ ['Cadena con ceros','dato = "004"\nprint(len(dato), int(dato) + 1)',['1 5','3 5','3 41'],'3 5'],
+ ['Mayúsculas y pertenencia','cultivo = "Maiz"\nprint(cultivo.islower(), "M" in cultivo)',['False True','True True','False False'],'False True'],
+ ['Concatenar antes de medir','a = "sol"\nb = "ana"\ntexto = a + b\nprint(len(texto), texto.count("a"))',['6 2','6 1','5 2'],'6 2'],
+ ['La media incluye todos los elementos','valores = [2, 4, 9]\ntotal = 0\nfor n in valores:\n    total += n\nprint(total / len(valores))',['5','5.0','7.5'],'5.0'],
+ ['Contar positivos sin contar cero','datos = [0, -2, 3, 5, -1]\ncuenta = 0\nfor n in datos:\n    if n > 0:\n        cuenta += 1\nprint(cuenta)',['2','3','4'],'2'],
+ ['Dos niveles de decisión','x = 8\nif x > 5:\n    if x < 8:\n        print("A")\n    else:\n        print("B")\nelse:\n    print("C")',['A','B','C'],'B'],
+ ['Un elif no vuelve a comprobar la primera condición','x = 7\nif x < 5:\n    print("A")\nelif x < 10:\n    print("B")\nelif x < 8:\n    print("C")\nelse:\n    print("D")',['A','B','C'],'B'],
+ ['Mutación después de calcular longitud','datos = [1, 2, 3]\ncantidad = len(datos)\ndatos.append(4)\nprint(cantidad, len(datos))',['3 3','3 4','4 4'],'3 4'],
+ ['El acumulador conserva su valor','def total_lista(datos):\n    total = 1\n    for n in datos:\n        total += n\n    return total\nprint(total_lista([2, 3, 4]))',['9','10','24'],'10'],
+ ['Se cuenta el cero','datos = [-1, 0, 1, 2]\ncuenta = 0\nfor n in datos:\n    if n >= 0:\n        cuenta += 1\nprint(cuenta)',['2','3','4'],'3'],
+ ['Último valor procesado','ultimo = 0\nfor n in [3, 6, 9]:\n    ultimo = n - 1\nprint(ultimo)',['3','8','9'],'8'],
+ ['Suma solo en posiciones impares','datos = [10, 20, 30, 40]\ntotal = 0\nfor i in range(len(datos)):\n    if i % 2 == 1:\n        total += datos[i]\nprint(total)',['40','50','60'],'60'],
+ ['Condición sobre dos listas','a = [3, 7, 11]\nb = [4, 6, 12]\ncuenta = 0\nfor i in range(len(a)):\n    if a[i] < b[i]:\n        cuenta += 1\nprint(cuenta)',['1','2','3'],'2'],
+ ['La llamada no cambia un número externo','def aumentar(n):\n    n = n + 5\n    return n\nvalor = 10\naumentar(valor)\nprint(valor)',['10','15','Error'],'10'],
+ ['El return conserva el primer resultado','def clasificar(n):\n    if n < 0:\n        return "negativo"\n    elif n == 0:\n        return "cero"\n    else:\n        return "positivo"\nprint(clasificar(0))',['negativo','cero','positivo'],'cero'],
+ ['Se suman las producciones seleccionadas','datos = [6, 8, 10, 12]\ntotal = 0\nfor n in datos:\n    if n % 2 == 0 and n >= 8:\n        total += n\nprint(total)',['20','30','36'],'30'],
+ ['Lista alterada por insert','datos = [4, 6]\ndatos.insert(1, datos[0])\ndatos[0] = 9\nprint(datos)',['[9, 4, 6]','[4, 4, 6]','[9, 6, 4]'],'[9, 4, 6]'],
+ ['Acumulador dentro del bucle anidado','total = 0\nfor fila in [1, 2]:\n    total = 0\n    for valor in [3, 4]:\n        total += fila * valor\nprint(total)',['7','14','21'],'14'],
+ ['Comprobación de palabra completa','codigo = "Lote-7"\nprint(codigo.isalnum(), "-" in codigo)',['True True','False True','False False'],'False True'],
+ ['Suma y comparación final','datos = [2, 3, 5]\ntotal = 0\nfor n in datos:\n    total += n\nprint(total > 9, total == 10)',['True True','False True','True False'],'True True'],
+ ['La lista se modifica antes de imprimirse','datos = [1, 2, 3]\nfor n in datos:\n    if n == 2:\n        datos.insert(0, 9)\nprint(datos)',['[9, 1, 2, 3]','[1, 2, 3]','El bucle no termina'],'El bucle no termina'],
+].forEach(x=>mc('Listas y bucles for','Predecir salida',x[0],'Elige la salida completa del fragmento. Fíjate en el orden de las operaciones.',x[1],x[2],x[3]));
+[
+ ['Corregir un acumulador','total = 0\nfor valor in datos:\n    total = valor\nprint(total)',['total += valor','total =+ valor','total == valor'],'total += valor'],
+ ['Corregir el límite inclusivo','if edad > 18 and edad < 40:\n    print("cumple")',['if edad >= 18 and edad <= 40:','if edad >= 18 or edad <= 40:','if edad > 18 or edad < 40:'],'if edad >= 18 and edad <= 40:'],
+ ['Corregir la llamada a len','cantidad = datos.len()',['cantidad = len(datos)','cantidad = length(datos)','cantidad = datos.length'],'cantidad = len(datos)'],
+ ['Corregir el método de lista','datos.add(5)',['datos.append(5)','datos.insert(5)','datos.extend(5)'],'datos.append(5)'],
+ ['Corregir acceso al segundo elemento','print(datos[2])  # se quiere el segundo elemento',['print(datos[1])','print(datos[0])','print(datos[-2])'],'print(datos[1])'],
+ ['Corregir un error de conversión','edad = input("Edad: ")\nprint(edad + 1)',['edad = int(input("Edad: "))','edad = str(input("Edad: "))','edad = float("Edad: ")'],'edad = int(input("Edad: "))'],
+ ['Corregir el recorrido de índices','for i in range(len(datos)):\n    print(datos[i + 1])',['for i in range(len(datos)):\n    print(datos[i])','for i in range(len(datos)):\n    print(datos[i - 1])','for i in datos:\n    print(datos[i])'],'for i in range(len(datos)):\n    print(datos[i])'],
+ ['Corregir una comparación','if ph = 7:\n    print("neutro")',['if ph == 7:','if ph := 7:','if ph != 7:'],'if ph == 7:'],
+ ['Corregir rama excluyente','if temperatura < 15:\n    print("frio")\nif temperatura <= 30:\n    print("normal")',['if temperatura < 15:\n    print("frio")\nelif temperatura <= 30:','if temperatura < 15:\n    print("frio")\nelse temperatura <= 30:','elif temperatura < 15:'],'if temperatura < 15:\n    print("frio")\nelif temperatura <= 30:'],
+ ['Corregir el orden del acumulador','for valor in datos:\n    total += valor\ntotal = 0',['total = 0\nfor valor in datos:\n    total += valor','for valor in datos:\n    total = valor','total = 0\ntotal += valor'],'total = 0\nfor valor in datos:\n    total += valor'],
+ ['Corregir borrado por posición','datos.remove(1)  # se quiere borrar la posición 1',['del datos[1]','del datos(1)','datos.pop(1)'],'del datos[1]'],
+ ['Corregir condición de pH ácido','if ph > 7:\n    print("acido")',['if ph < 7:','if ph <= 7:','if ph == 7:'],'if ph < 7:'],
+].forEach(x=>{const topic=['Corregir el límite inclusivo','Corregir una comparación','Corregir rama excluyente','Corregir condición de pH ácido'].includes(x[0])?'Condicionales y funciones':x[0]==='Corregir un error de conversión'?'Interacción y validación':'Listas y bucles for';mc(topic,'Detectar y corregir',x[0],'Selecciona la corrección que hace que el programa cumpla el comentario.',x[1],x[2],x[3])});
+[
+ ['Expresión para sumar solo positivos','for n in datos:\n    if n > 0:\n        total ___ n',['+=','-=','=','=='],'+='],
+ ['Límite final para incluir hasta 5','for n in range(1, ___):\n    print(n)',['5','6','7'],'6'],
+ ['Condición para aceptar ambos extremos','if edad ___ 18 and edad ___ 40:',['>= / <=','> / <','<= / >'],'>= / <=' ],
+ ['Acceso al último elemento','ultimo = datos[___]',['0','len(datos)','-1'],'-1'],
+ ['Método para añadir un único elemento','datos.___(nuevo_valor)',['append','extend','remove'],'append'],
+ ['Expresión para comprobar pertenencia','if cultivo ___ cultivos:',['in','is','=='],'in'],
+ ['Método que cuenta una subcadena','veces = texto.___("a")',['count','len','split'],'count'],
+ ['Expresión de rango correcto','if temperatura >= 10 ___ temperatura <= 15:',['and','or','not'],'and'],
+].forEach(x=>{const topic=['Expresión para sumar solo positivos','Límite final para incluir hasta 5','Acceso al último elemento','Método para añadir un único elemento','Expresión para comprobar pertenencia'].includes(x[0])?'Listas y bucles for':x[0]==='Método que cuenta una subcadena'?'Interacción y validación':'Condicionales y funciones';mc(topic,'Completar expresión',x[0],'Elige la expresión que completa correctamente el código.',x[1],x[2],x[3])});
+
+[
+ ['Variables, tipos y operadores','Convertir una lectura decimal','lectura = "24.5"\nminimo = 10.0\nmaximo = 30.0\ntemperatura = int(lectura)  # CORREGIR\nif temperatura >= minimo and temperatura <= maximo:\n    mensaje = "Temperatura correcta"\nelse:\n    mensaje = "Revisar sensor"\nprint(mensaje)', 'temperatura = float(lectura)'],
+ ['Variables, tipos y operadores','Unir un número con el mensaje','hectareas = 45\nproduccion = 12.5\ntexto = "Superficie: " + str(hectareas)\ntexto = texto + " ha; producción: " + produccion  # CORREGIR\nprint(texto)', 'texto = texto + " ha; producción: " + str(produccion)'],
+ ['Variables, tipos y operadores','Calcular el resto de sacos','kilos = 127\ncapacidad = 25\nsacos_llenos = kilos // capacidad\nkilos_sueltos = kilos // capacidad  # CORREGIR\nprint(sacos_llenos, kilos_sueltos)', 'kilos_sueltos = kilos % capacidad'],
+ ['Variables, tipos y operadores','Guardar una comparación','ph_a = 6\nph_b = 7\nson_iguales = ph_a = ph_b  # CORREGIR\nif son_iguales:\n    print("Mismo pH")\nelse:\n    print("pH distinto")', 'son_iguales = ph_a == ph_b'],
+ ['Variables, tipos y operadores','Combinar condiciones de riego','suelo_seco = True\ntemperatura_alta = False\nhay_que_regar = suelo_seco or temperatura_alta  # CORREGIR\nif hay_que_regar:\n    print("Regar")\nelse:\n    print("No regar")', 'hay_que_regar = suelo_seco and temperatura_alta'],
+ ['Variables, tipos y operadores','Calcular el volumen del depósito','ancho = 2\nlargo = 3\nprofundidad = 4\nvolumen = ancho * largo + profundidad  # CORREGIR\nlitros = volumen * 1000\nprint(volumen, litros)', 'volumen = ancho * largo * profundidad'],
+ ['Condicionales y funciones','Aplicar el límite de humedad','humedad = 40\nif humedad >= 40:  # CORREGIR\n    estado = "adecuada"\nelse:\n    estado = "necesita riego"\nprint(estado)', 'if humedad > 40:'],
+ ['Condicionales y funciones','Clasificar el pH ácido','ph = 6.5\nif ph > 7:  # CORREGIR\n    resultado = "acido"\nelif ph == 7:\n    resultado = "neutro"\nelse:\n    resultado = "basico"\nprint(resultado)', 'if ph < 7:'],
+ ['Condicionales y funciones','Comprobar una edad inclusiva','edad = 18\nif edad >= 18 or edad <= 40:  # CORREGIR\n    resultado = "cumple"\nelse:\n    resultado = "no cumple"\nprint(resultado)', 'if edad >= 18 and edad <= 40:'],
+ ['Condicionales y funciones','Clasificar el límite de temperatura','temperatura = 30\nif temperatura < 15:\n    nivel = "frio"\nelif temperatura < 30:  # CORREGIR\n    nivel = "normal"\nelse:\n    nivel = "calor"\nprint(nivel)', 'elif temperatura <= 30:'],
+ ['Condicionales y funciones','Devolver el cálculo de área','def area_parcela(largo, ancho):\n    superficie = largo * ancho\n    superficie  # CORREGIR\n\nhectareas = area_parcela(100, 50) / 10000\nprint(hectareas)', '    return superficie'],
+ ['Condicionales y funciones','Usar el argumento de la función','def es_acido(ph_suelo):\n    if ph < 7:  # CORREGIR\n        return True\n    else:\n        return False\n\nprint(es_acido(6.5))', '    if ph_suelo < 7:'],
+ ['Condicionales y funciones','Calcular superficie rectangular','def superficie(largo, ancho):\n    return largo + ancho  # CORREGIR\n\nparcela = superficie(40, 25)\nif parcela > 900:\n    print("Grande")\nelse:\n    print("Pequeña")', '    return largo * ancho'],
+ ['Condicionales y funciones','Comprobar las dos condiciones de almacenamiento','temperatura = 12\nhumedad = 13\nif temperatura < 15 or humedad < 14:  # CORREGIR\n    print("Condiciones adecuadas")\nelse:\n    print("No adecuadas")', 'if temperatura < 15 and humedad < 14:'],
+ ['Interacción y validación','Convertir una entrada a entero','edad_texto = input("Edad: ")\nif edad_texto.isdigit():\n    edad = edad_texto + 1  # CORREGIR\n    print(edad)\nelse:\n    print("Valor no aceptado")', '    edad = int(edad_texto) + 1'],
+ ['Interacción y validación','Validar un código alfanumérico','codigo = input("Código: ")\nlongitud_correcta = len(codigo) >= 8\ncontenido_correcto = codigo.isalpha()  # CORREGIR\nif longitud_correcta and contenido_correcto:\n    print("Código válido")\nelse:\n    print("Código no válido")', 'contenido_correcto = codigo.isalnum()'],
+ ['Interacción y validación','Comprobar una contraseña larga','clave = input("Contraseña: ")\ntiene_ocho = len(clave) >= 8\ntiene_digitos = clave.isdigit()\nif tiene_ocho or tiene_digitos:  # CORREGIR\n    print("Cumple")\nelse:\n    print("No cumple")', 'if tiene_ocho and tiene_digitos:'],
+ ['Interacción y validación','Aceptar un código con letras y números','codigo = "Lote-2026"\nlongitud_correcta = len(codigo) >= 8\ncontenido_correcto = codigo.isalpha()  # CORREGIR\nif longitud_correcta and contenido_correcto:\n    print("Código válido")\nelse:\n    print("Código no válido")', 'contenido_correcto = codigo.isalnum()'],
+ ['Listas y bucles for','Acumular toda la producción','produccion = [12, 9, 15, 8]\ntotal = 0\nfor mes in produccion:\n    total = mes  # CORREGIR\nmedia = total / len(produccion)\nprint(total, media)', '    total += mes'],
+ ['Listas y bucles for','Contar las granjas correctas','produccion = [12, -1, 8, 0, 5]\ncorrectas = 0\nfor valor in produccion:\n    if valor >= 0:\n        correctas += valor  # CORREGIR\nprint(correctas)', '        correctas += 1'],
+ ['Listas y bucles for','Recorrer todas las posiciones','datos = [5, 8, 11, 14]\ntotal = 0\nfor i in range(len(datos) + 1):  # CORREGIR\n    total += datos[i]\nprint(total)', 'for i in range(len(datos)):'],
+ ['Listas y bucles for','Acceder a los elementos emparejados','a = [2, 4, 6]\nb = [10, 20, 30]\nresultado = []\nfor i in range(len(a)):\n    resultado.append(a[i] + b[i + 1])  # CORREGIR\nprint(resultado)', '    resultado.append(a[i] + b[i])'],
+ ['Listas y bucles for','Invertir una lista mediante índices','datos = ["a", "b", "c", "d"]\ninvertida = []\nfor i in range(len(datos)):\n    invertida.append(datos[len(datos) - i])  # CORREGIR\nprint(invertida)', '    invertida.append(datos[len(datos) - 1 - i])'],
+ ['Listas y bucles for','Actualizar el máximo','produccion = [14, 9, 22, 18]\nmayor = produccion[0]\nfor valor in produccion:\n    if valor < mayor:  # CORREGIR\n        mayor = valor\nprint(mayor)', '    if valor > mayor:'],
+ ['Listas y bucles for','Añadir todos los elementos de otra lista','primera = [1, 2]\nsegunda = [3, 4]\nprimera.append(segunda)  # CORREGIR\nprint(len(primera))\nfor valor in primera:\n    print(valor)', 'primera.extend(segunda)'],
+ ['Listas y bucles for','Eliminar una posición sin confundirla con su valor','datos = [10, 20, 30, 40]\ndel datos[20]  # CORREGIR: se quiere borrar la posición 1\nprint(datos)', 'del datos[1]'],
+ ['Listas y bucles for','Contar elementos sin añadir sus valores','datos = [3, 8, 2, 9]\ncontador = 0\nfor valor in datos:\n    contador += valor  # CORREGIR\nprint(contador)', '    contador += 1'],
+ ['Listas y bucles for','Sumar solo los valores pares','datos = [3, 4, 7, 10]\ntotal = 0\nfor valor in datos:\n    if valor % 2 == 0:\n        total += 1  # CORREGIR\nprint(total)', '        total += valor'],
+ ['Listas y bucles for','Calcular la media de una lista','produccion = [6, 10, 14, 18]\ntotal = 0\nfor valor in produccion:\n    total += valor\nmedia = total / 12  # CORREGIR: la lista tiene cuatro datos\nprint(media)', 'media = total / len(produccion)'],
+ ['Listas y bucles for','Imprimir cada elemento de la lista','datos = [8, 12, 16]\nfor valor in datos:\n    print(datos[valor])  # CORREGIR\nprint("Fin")', '    print(valor)'],
+].forEach(x=>hardFix(...x));
+
+[
+ ['Variables, tipos y operadores','Corregir conversión y mensaje','lectura = "25.5"\ntemperatura = int(lectura)\nmensaje = "Temperatura: " + temperatura + " C"\nprint(mensaje)','lectura = "25.5"\ntemperatura = float(lectura)\nmensaje = "Temperatura: " + str(temperatura) + " C"\nprint(mensaje)'],
+ ['Condicionales y funciones','Corregir la función de humedad','def evaluar_humedad(humedad_suelo):\n    if humedad > 40:\n        resultado = "adecuada"\n    else:\n        resultado = "necesita riego"\n    print(resultado)\n\nhumedad = 35\nrespuesta = evaluar_humedad(humedad)\nprint(respuesta)','def evaluar_humedad(humedad_suelo):\n    if humedad_suelo > 40:\n        resultado = "adecuada"\n    else:\n        resultado = "necesita riego"\n    return resultado\n\nhumedad = 35\nrespuesta = evaluar_humedad(humedad)\nprint(respuesta)'],
+ ['Listas y bucles for','Corregir suma y media mensual','produccion = [8, 12, 10, 14]\ntotal = 1\nfor valor in produccion:\n    total = valor\nmedia = total / len(produccion)\nprint("Total:", total)\nprint("Media:", media)','produccion = [8, 12, 10, 14]\ntotal = 0\nfor valor in produccion:\n    total += valor\nmedia = total / len(produccion)\nprint("Total:", total)\nprint("Media:", media)'],
+ ['Listas y bucles for','Corregir el conteo de valores positivos','datos = [-2, 4, 0, 7, -1]\npositivos = 1\nfor valor in datos:\n    if valor > 0:\n        positivos += valor\nprint("Positivos:", positivos)','datos = [-2, 4, 0, 7, -1]\npositivos = 0\nfor valor in datos:\n    if valor > 0:\n        positivos += 1\nprint("Positivos:", positivos)'],
+ ['Listas y bucles for','Corregir inversión y longitud','datos = ["norte", "sur", "este"]\ninvertida = []\nfor i in range(len(datos) - 1):\n    invertida.append(datos[len(datos) - i])\nprint(invertida)','datos = ["norte", "sur", "este"]\ninvertida = []\nfor i in range(len(datos)):\n    invertida.append(datos[len(datos) - 1 - i])\nprint(invertida)'],
+ ['Listas y bucles for','Corregir suma de dos producciones','granja_a = [2, 5, 7]\ngranja_b = [3, 4, 8]\ntotales = []\nfor i in range(len(granja_a) + 1):\n    totales.append(granja_a[i] + granja_b[i + 1])\nprint(totales)','granja_a = [2, 5, 7]\ngranja_b = [3, 4, 8]\ntotales = []\nfor i in range(len(granja_a)):\n    totales.append(granja_a[i] + granja_b[i])\nprint(totales)'],
+].forEach(x=>hardFixBlock(...x));
+
+// Los ejercicios difíciles usan fragmentos completos. Los ejemplos cortos pasan a nivel intermedio.
+for(const q of bank){if(q.difficulty==='Difícil'&&q.code.split('\n').length<8){q.difficulty='Intermedio';q.opts.difficulty='Intermedio'}}
+const outputTrace=(topic,title,code,answer)=>add(topic,'Predecir salida',title,'Sigue todo el programa y escribe exactamente lo que aparece, respetando el orden de las líneas.',code,answer,{mode:'output',difficulty:'Difícil'});
+const completeLong=(topic,title,code,answer)=>add(topic,'Completar expresión',title,'Completa la expresión marcada después de analizar el fragmento completo.',code,answer,{mode:'code',difficulty:'Difícil'});
+[
+['Listas y bucles for','Corregir acumulación, media y conversión','produccion = [12, 8, 15, 5]\ntotal = 1\nfor dato in produccion:\n    total = dato  # CORREGIR\nmedia = total / len(produccion)\nmensaje = "Total: " + str(total)\nprint(mensaje)\nprint("Media:", media)\nprint("Muestras:", len(produccion))','produccion = [12, 8, 15, 5]\ntotal = 0\nfor dato in produccion:\n    total += dato\nmedia = total / len(produccion)\nmensaje = "Total: " + str(total)\nprint(mensaje)\nprint("Media:", media)\nprint("Muestras:", len(produccion))'],
+['Listas y bucles for','Corregir conteo, no suma, de datos válidos','datos = [12, -1, 8, 0, 5]\nvalidos = 0\ntotal = 0\nfor dato in datos:\n    if dato >= 0:\n        validos += dato  # CORREGIR\n        total += dato\nif validos > 0:\n    media = total / validos\nelse:\n    media = 0\nprint(validos, total, media)','datos = [12, -1, 8, 0, 5]\nvalidos = 0\ntotal = 0\nfor dato in datos:\n    if dato >= 0:\n        validos += 1\n        total += dato\nif validos > 0:\n    media = total / validos\nelse:\n    media = 0\nprint(validos, total, media)'],
+['Listas y bucles for','Corregir rango e índices al invertir una lista','nombres = ["Ana", "Luis", "Marta", "Omar"]\ninvertida = []\nfor i in range(len(nombres)):\n    posicion = len(nombres) - i  # CORREGIR\n    invertida.append(nombres[posicion])\nprimero = invertida[0]\nultimo = invertida[-1]\nprint(invertida)\nprint(primero, ultimo)','nombres = ["Ana", "Luis", "Marta", "Omar"]\ninvertida = []\nfor i in range(len(nombres)):\n    posicion = len(nombres) - 1 - i\n    invertida.append(nombres[posicion])\nprimero = invertida[0]\nultimo = invertida[-1]\nprint(invertida)\nprint(primero, ultimo)'],
+['Listas y bucles for','Corregir suma por posición de dos listas','parcela_a = [3, 5, 7, 9]\nparcela_b = [2, 4, 6, 8]\ntotales = []\nfor i in range(len(parcela_a)):\n    suma = parcela_a[i] + parcela_b[i + 1]  # CORREGIR\n    totales.append(suma)\nacumulado = 0\nfor valor in totales:\n    acumulado += valor\nmedia = acumulado / len(totales)\nprint(totales)\nprint(media)','parcela_a = [3, 5, 7, 9]\nparcela_b = [2, 4, 6, 8]\ntotales = []\nfor i in range(len(parcela_a)):\n    suma = parcela_a[i] + parcela_b[i]\n    totales.append(suma)\nacumulado = 0\nfor valor in totales:\n    acumulado += valor\nmedia = acumulado / len(totales)\nprint(totales)\nprint(media)'],
+['Interacción y validación','Corregir argumentos, retorno y llamada de función','def calcular_media(valores):\n    total = 0\n    for valor in valores:\n        total += valor\n    media = total / len(datos)  # CORREGIR\n    return media\n\nproduccion = [5, 8, 11, 4]\nresultado = calcular_media(produccion)\nif resultado >= 7:\n    print("Media alta", resultado)\nelse:\n    print("Media baja", resultado)','def calcular_media(valores):\n    total = 0\n    for valor in valores:\n        total += valor\n    media = total / len(valores)\n    return media\n\nproduccion = [5, 8, 11, 4]\nresultado = calcular_media(produccion)\nif resultado >= 7:\n    print("Media alta", resultado)\nelse:\n    print("Media baja", resultado)'],
+['Condicionales y funciones','Corregir el intervalo de clasificación','def clasificar(edad):\n    if edad < 18:\n        return "menor"\n    elif edad >= 18 or edad <= 65:  # CORREGIR\n        return "adulto"\n    else:\n        return "mayor"\n\nedades = [17, 18, 40, 65, 66]\nfor edad in edades:\n    print(edad, clasificar(edad))','def clasificar(edad):\n    if edad < 18:\n        return "menor"\n    elif edad >= 18 and edad <= 65:\n        return "adulto"\n    else:\n        return "mayor"\n\nedades = [17, 18, 40, 65, 66]\nfor edad in edades:\n    print(edad, clasificar(edad))'],
+['Interacción y validación','Corregir validación y conversión de lecturas','lecturas = ["12", "5", "x", "9"]\nvalidas = []\ntotal = 0\nfor texto in lecturas:\n    if texto.isdigit():\n        valor = int(texto)\n        if valor >= 10:\n            validas.append(valor)\n        else:\n            validas.append(valor + 1)\nfor valor in validas:\n    total += valor\nmedia = total / len(lecturas)  # CORREGIR\nprint(validas)\nprint(media)','lecturas = ["12", "5", "x", "9"]\nvalidas = []\ntotal = 0\nfor texto in lecturas:\n    if texto.isdigit():\n        valor = int(texto)\n        if valor >= 10:\n            validas.append(valor)\n        else:\n            validas.append(valor + 1)\nfor valor in validas:\n    total += valor\nmedia = total / len(validas)\nprint(validas)\nprint(media)'],
+['Listas y bucles for','Corregir un pequeño error de sangría','datos = [2, 4, 6, 8]\ntotal = 0\nfor valor in datos:\n    if valor > 3:\n    total += valor  # CORREGIR\n    else:\n        total += 1\nmedia = total / len(datos)\nprint("Acumulado:", total)\nprint("Media:", media)','datos = [2, 4, 6, 8]\ntotal = 0\nfor valor in datos:\n    if valor > 3:\n        total += valor\n    else:\n        total += 1\nmedia = total / len(datos)\nprint("Acumulado:", total)\nprint("Media:", media)'],
+['Condicionales y funciones','Corregir puntuación y condición en un programa','def contar_adultos(edades):\n    total = 0\n    for edad in edades:\n        if edad >= 18  # CORREGIR\n            total += 1\n    return total\n\nedades = [17, 18, 20, 16, 18]\nresultado = contar_adultos(edades)\nprint("Mayores de edad:", resultado)','def contar_adultos(edades):\n    total = 0\n    for edad in edades:\n        if edad >= 18:\n            total += 1\n    return total\n\nedades = [17, 18, 20, 16, 18]\nresultado = contar_adultos(edades)\nprint("Mayores de edad:", resultado)'],
+ ['Variables, tipos y operadores','Corregir el paréntesis de una conversión','lecturas = ["4", "9", "12"]\nvalores = []\nfor texto in lecturas:\n    valores.append(int(texto))\nminimo = valores[0]\nmaximo = valores[0]\nfor valor in valores:\n    if valor < minimo:\n        minimo = valor\n    if valor > maximo:\n        maximo = valor\ndiferencia = maximo - minimo\nmensaje = "Diferencia: " + str(diferencia\nprint(mensaje)\nprint("Valores:", valores)','lecturas = ["4", "9", "12"]\nvalores = []\nfor texto in lecturas:\n    valores.append(int(texto))\nminimo = valores[0]\nmaximo = valores[0]\nfor valor in valores:\n    if valor < minimo:\n        minimo = valor\n    if valor > maximo:\n        maximo = valor\ndiferencia = maximo - minimo\nmensaje = "Diferencia: " + str(diferencia)\nprint(mensaje)\nprint("Valores:", valores)'],
+ ['Listas y bucles for','Corregir límite y acceso en un recorrido','temperaturas = [18, 22, 27, 31]\nlimite = 25\nsuperiores = []\nprimera_posicion = -1\nfor i in range(len(temperaturas) + 1):  # CORREGIR\n    if temperaturas[i] > limite:\n        superiores.append(temperaturas[i])\n        if primera_posicion == -1:\n            primera_posicion = i\ncuenta = len(superiores)\nprint(superiores)\nprint("Superan límite:", cuenta)\nprint("Primera posición:", primera_posicion)','temperaturas = [18, 22, 27, 31]\nlimite = 25\nsuperiores = []\nprimera_posicion = -1\nfor i in range(len(temperaturas)):\n    if temperaturas[i] > limite:\n        superiores.append(temperaturas[i])\n        if primera_posicion == -1:\n            primera_posicion = i\ncuenta = len(superiores)\nprint(superiores)\nprint("Superan límite:", cuenta)\nprint("Primera posición:", primera_posicion)'],
+['Listas y bucles for','Corregir la palabra clave dentro de una función','def contar_vocales(palabra):\n    vocales = "aeiou"\n    total = 0\n    palabra = palabra.lower()\n    for letra of palabra:  # CORREGIR\n        if letra in vocales:\n            total += 1\n    return total\n\ntexto = "informatica"\nprint(contar_vocales(texto))\nprint(len(texto))','def contar_vocales(palabra):\n    vocales = "aeiou"\n    total = 0\n    palabra = palabra.lower()\n    for letra in palabra:\n        if letra in vocales:\n            total += 1\n    return total\n\ntexto = "informatica"\nprint(contar_vocales(texto))\nprint(len(texto))'],
+['Condicionales y funciones','Corregir retorno en vez de imprimir desde la función','def es_valido(codigo):\n    if len(codigo) >= 6 and codigo.isalnum():\n        print(True)  # CORREGIR\n    else:\n        return False\n\ncodigos = ["AB1234", "A-1234", "123"]\nfor codigo in codigos:\n    resultado = es_valido(codigo)\n    print(codigo, resultado)','def es_valido(codigo):\n    if len(codigo) >= 6 and codigo.isalnum():\n        return True\n    else:\n        return False\n\ncodigos = ["AB1234", "A-1234", "123"]\nfor codigo in codigos:\n    resultado = es_valido(codigo)\n    print(codigo, resultado)']
+].forEach(x=>hardFixBlock(...x));
+
+[
+ ['Condicionales y funciones','Dos puntos al definir una función','def superficie(largo, ancho)  # CORREGIR\n    return largo * ancho\n\nprint(superficie(8, 3))','def superficie(largo, ancho):'],
+ ['Variables, tipos y operadores','Paréntesis final de print','temperatura = 21.5\nmensaje = "Temperatura: " + str(temperatura)\nprint(mensaje  # CORREGIR','print(mensaje)'],
+ ['Condicionales y funciones','Operador de comparación con un espacio de más','ph = 7\nif ph = = 7:  # CORREGIR\n    print("neutro")\nelse:\n    print("no neutro")','if ph == 7:'],
+ ['Listas y bucles for','Palabra correcta en un for','datos = [4, 8, 12]\ntotal = 0\nfor valor of datos:  # CORREGIR\n    total += valor\nprint(total)','for valor in datos:'],
+ ['Condicionales y funciones','Sangría de una línea dentro del if','humedad = 35\nif humedad < 40:\nprint("necesita riego")  # CORREGIR\nelse:\n    print("adecuada")','    print("necesita riego")'],
+ ['Listas y bucles for','Corchete final de la lista','produccion = [8, 10, 12)  # CORREGIR\ntotal = 0\nfor valor in produccion:\n    total += valor\nprint(total)','produccion = [8, 10, 12]'],
+ ['Listas y bucles for','Paréntesis al llamar append','datos = [1, 2]\ndatos.append 3  # CORREGIR\nprint(datos)','datos.append(3)'],
+ ['Listas y bucles for','Paréntesis de la función len','datos = [5, 7, 9]\ncantidad = len[datos]  # CORREGIR\nprint(cantidad)','cantidad = len(datos)'],
+ ['Variables, tipos y operadores','Nombre escrito de forma consistente','hectareas = 12\nproduccion = 150\ntotal = hecteraes * produccion  # CORREGIR\nprint(total)','total = hectareas * produccion'],
+ ['Interacción y validación','Paréntesis de input dentro de int','edad = int input("Edad: ")  # CORREGIR\nif edad >= 18:\n    print("adulto")\nelse:\n    print("menor")','edad = int(input("Edad: "))'],
+ ['Condicionales y funciones','Dos puntos después de la condición','temperatura = 31\nif temperatura > 30  # CORREGIR\n    print("calor")\nelse:\n    print("normal")','if temperatura > 30:'],
+ ['Condicionales y funciones','Corregir la condición de neutralidad','ph = 8\nif ph < 7:\n    print("acido")\nelif ph < 7:  # CORREGIR\n    print("neutro")\nelse:\n    print("basico")','elif ph == 7:'],
+ ['Listas y bucles for','Paréntesis y corchetes en un acceso','datos = [11, 15, 20]\nfor i in range(len(datos)):\n    print(datos(i))  # CORREGIR','    print(datos[i])'],
+].forEach(x=>hardFix(...x));
+
+[
+ ['Condicionales y funciones','Corregir sintaxis de función y recorrido','def contar(datos)\n    total = 0\n    for valor of datos:\n    total += 1\n    return total\n\nresultado = contar([2, 4, 6])\nprint(resultado)','def contar(datos):\n    total = 0\n    for valor in datos:\n        total += 1\n    return total\n\nresultado = contar([2, 4, 6])\nprint(resultado)'],
+ ['Condicionales y funciones','Corregir sintaxis de una clasificación','ph = 6.5\nif ph < 7\n    categoria = "acido"\nelif ph < 7:\n    categoria = "neutro"\nelse:\n    categoria = "basico"\nprint(categoria)','ph = 6.5\nif ph < 7:\n    categoria = "acido"\nelif ph == 7:\n    categoria = "neutro"\nelse:\n    categoria = "basico"\nprint(categoria)'],
+ ['Listas y bucles for','Corregir sangría y acumulación','produccion = [5, 8, 10]\ntotal = 0\nfor valor in produccion:\ntotal =+ valor\nprint("Total:", total)','produccion = [5, 8, 10]\ntotal = 0\nfor valor in produccion:\n    total += valor\nprint("Total:", total)'],
+ ['Variables, tipos y operadores','Corregir comillas, conversión y concatenación','hectareas = 45\nmensaje = "Superficie: + hectareas + " ha\nprint(mensaje','hectareas = 45\nmensaje = "Superficie: " + str(hectareas) + " ha"\nprint(mensaje)'],
+].forEach(x=>hardFixBlock(...x));
+
+// También se rebajan los ejemplos cortos que aparecen después de la primera batería larga.
+for(const q of bank){if(q.difficulty==='Difícil'&&q.code.split('\n').length<8){q.difficulty='Intermedio';q.opts.difficulty='Intermedio'}}
+const longTrace=(topic,title,code,answer)=>add(topic,'Predecir salida',title,'Sigue todo el programa y escribe exactamente lo que aparece, respetando el orden de las líneas.',code,answer,{mode:'output',difficulty:'Difícil'});
+const longComplete=(topic,title,code,answer)=>add(topic,'Completar expresión',title,'Completa la expresión marcada después de analizar el fragmento completo.',code,answer,{mode:'code',difficulty:'Difícil'});
+[
+['Listas y bucles for','Filtrar, acumular y consultar una lista','datos = [2, 5, 8, 3]\npares = []\ntotal = 0\nfor valor in datos:\n    if valor % 2 == 0:\n        pares.append(valor)\n    total += valor\nmedia = total / len(datos)\nprint(pares)\nprint(total)\nprint(media)','[2, 8]\n18\n4.5'],
+['Listas y bucles for','Seguir una función que modifica y devuelve la lista','def ajustar(valores):\n    for i in range(len(valores)):\n        if valores[i] < 5:\n            valores[i] += 1\n    valores.append(len(valores))\n    return valores[0]\n\ndatos = [2, 5, 1]\nprimero = ajustar(datos)\nprint(primero)\nprint(datos)\nprint(len(datos))','3\n[3, 5, 2, 3]\n4'],
+['Interacción y validación','Combinar métodos de cadena admitidos','codigo = "Lab4A2"\nmayusculas = codigo.upper()\nvalido = codigo.isalnum()\nletra_a = mayusculas.count("A")\npartes = codigo.split("4")\nprint(mayusculas)\nprint(valido)\nprint(letra_a)\nprint(partes)\nprint(codigo.islower())','LAB4A2\nTrue\n2\n[\'Lab\', \'A2\']\nFalse'],
+['Listas y bucles for','Recorrer una lista de listas con dos bucles','filas = [[1, 2, 3], [4, 5], [6]]\ntotal = 0\ncuenta = 0\nfor fila in filas:\n    for valor in fila:\n        if valor > 3:\n            total += valor\n            cuenta += 1\nprint(total)\nprint(cuenta)\nprint(len(filas))','15\n3\n3'],
+['Listas y bucles for','Analizar un range con inicio y paso','datos = [10, 20, 30, 40, 50, 60]\nseleccion = []\ntotal = 0\nfor i in range(1, len(datos), 2):\n    seleccion.append(datos[i])\nfor valor in seleccion:\n    total += valor\nmedia = total / len(seleccion)\nprint(seleccion)\nprint(total)\nprint(media)','[20, 40, 60]\n120\n40.0'],
+['Condicionales y funciones','Seguir límites exactos en una función','def clasificar(valor):\n    if valor < 10:\n        return "bajo"\n    elif valor <= 20:\n        return "medio"\n    else:\n        return "alto"\n\nvalores = [9, 10, 20, 21]\nfor valor in valores:\n    print(clasificar(valor))\nprint(clasificar(10))','bajo\nmedio\nmedio\nalto\nmedio'],
+['Listas y bucles for','Actualizar máximos y contar coincidencias','datos = [4, 9, 3, 9, 7]\nmayor = datos[0]\nveces = 0\nfor valor in datos:\n    if valor > mayor:\n        mayor = valor\n        veces = 1\n    elif valor == mayor:\n        veces += 1\nultima_posicion = 0\nfor i in range(len(datos)):\n    if datos[i] == mayor:\n        ultima_posicion = i\nprint(mayor)\nprint(veces)\nprint(ultima_posicion)','9\n2\n3'],
+['Listas y bucles for','Seguir dos listas y una condición compuesta','temperaturas = [12, 18, 25, 31]\nhumedades = [45, 35, 50, 60]\ncorrectas = []\nfor i in range(len(temperaturas)):\n    if temperaturas[i] >= 15 and humedades[i] <= 50:\n        correctas.append(i)\ncuenta = len(correctas)\nprimera = correctas[0]\nultima = correctas[cuenta - 1]\nprint(correctas)\nprint(primera, ultima)\nprint(cuenta)','[1, 2]\n1 2\n2'],
+['Listas y bucles for','Observar una lista compartida y un valor guardado','datos = [3, 6, 9]\nreferencia = datos\nvalor_guardado = datos[0]\nreferencia.append(12)\ndatos[0] = valor_guardado + len(referencia)\ntotal = 0\nfor valor in datos:\n    total += valor\nprint(datos)\nprint(referencia)\nprint(total)','[7, 6, 9, 12]\n[7, 6, 9, 12]\n34']
+].forEach(x=>outputTrace(...x));
+[
+['Listas y bucles for','Completar la expresión de la última posición válida','datos = [5, 8, 11, 14]\ntotal = 0\nfor i in range(len(datos)):\n    total += datos[i]\n    if datos[i] > 10:\n        total += 1\nmedia = total / len(datos)\nprint("Total:", total)\nprint("Media:", media)\nprint(datos[____])','len(datos) - 1'],
+['Listas y bucles for','Completar el acumulador dentro de una función','def media_positiva(datos):\n    total = 0\n    cantidad = 0\n    for valor in datos:\n        if valor > 0:\n            total ____ valor\n            cantidad += 1\n    if cantidad == 0:\n        return 0\n    return total / cantidad\n\nprint(media_positiva([4, -2, 8]))','+='],
+['Condicionales y funciones','Completar una condición que incluye ambos extremos','def esta_en_rango(valor, minimo, maximo):\n    if valor >= minimo ____ valor <= maximo:\n        return True\n    else:\n        return False\n\nvalores = [2, 5, 8, 11]\nfor valor in valores:\n    print(valor, esta_en_rango(valor, 5, 10))','and'],
+['Listas y bucles for','Completar el límite de un recorrido con paso dos','medidas = [3, 6, 9, 12, 15, 18]\nseleccion = []\nfor i in range(1, ____, 2):\n    seleccion.append(medidas[i])\ntotal = 0\nfor valor in seleccion:\n    total += valor\nmedia = total / len(seleccion)\nprint(seleccion)\nprint(total, media)','len(medidas)'],
+['Interacción y validación','Completar la comprobación de un código alfanumérico','def validar(codigo):\n    longitud_ok = len(codigo) >= 5\n    contenido_ok = codigo.____()\n    if longitud_ok and contenido_ok:\n        return "válido"\n    else:\n        return "no válido"\n\ncodigos = ["AB123", "A-123", "12345"]\nfor codigo in codigos:\n    print(validar(codigo))','isalnum']
+].forEach(x=>completeLong(...x));
+
+const topicFilter=document.querySelector('#topicFilter'),kindFilter=document.querySelector('#kindFilter'),difficultyFilter=document.querySelector('#difficultyFilter'),card=document.querySelector('#questionCard');
+let order=bank.map((_,i)=>i),current=0,attempts=Number(localStorage.getItem('py-practice-attempts')||0),solved=new Set(JSON.parse(localStorage.getItem('py-practice-solved')||'[]'));
+const topics=[...new Set(bank.map(q=>q.topic))];
+topics.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;topicFilter.append(o)});
+const kinds=[...new Set(bank.map(q=>q.kind))];
+kinds.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;kindFilter.append(o)});
+const difficulties=[...new Set(bank.map(q=>q.difficulty))];
+difficulties.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;difficultyFilter.append(o)});
+function filtered(){return order.filter(i=>(topicFilter.value==='all'||bank[i].topic===topicFilter.value)&&(kindFilter.value==='all'||bank[i].kind===kindFilter.value)&&(difficultyFilter.value==='all'||bank[i].difficulty===difficultyFilter.value))}
+function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function escRE(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+function normalize(value,mode){let s=value.replace(/\r/g,'').trim();if(mode==='block')return s.split('\n').map(line=>line.replace(/[ \t]+$/,'')).join('\n');if(mode==='code'){let out='',quote='',escaped=false;for(const ch of s){if(quote){out+=ch;if(escaped)escaped=false;else if(ch==='\\')escaped=true;else if(ch===quote)quote='';continue}if(ch==='"'||ch==="'"||ch==='`'){quote=ch;out+=ch}else if(!/\s/.test(ch))out+=ch}return out.replace(/;+$/,'')}return s.replace(/[ \t]+/g,' ').replace(/\n[ \t]*/g,'\n')}
+function updateStats(list){document.querySelector('#bankCount').textContent=list.length;document.querySelector('#solvedCount').textContent=list.filter(i=>solved.has(bank[i].id)).length;document.querySelector('#progressBar').style.width=(list.length?100*list.filter(i=>solved.has(bank[i].id)).length/list.length:0)+'%';document.querySelector('#attemptLabel').textContent=attempts?`${attempts} comprobaciones`:' ';}
+function render(){const list=filtered();updateStats(list);if(!list.length){card.innerHTML='<div class="empty"><strong>No hay preguntas con estos filtros.</strong>Prueba otra combinación.</div>';document.querySelector('#positionLabel').textContent='Sin preguntas';return}current=Math.max(0,Math.min(current,list.length-1));const q=bank[list[current]];document.querySelector('#positionLabel').textContent=`Pregunta ${current+1} de ${list.length}`;
+ let input=`<textarea class="answer-input" id="answer" rows="3" spellcheck="false" placeholder="Escribe aquí tu respuesta"></textarea>`;
+card.innerHTML=`<div class="question-head"><div class="badges"><span class="badge">${safe(q.topic)}</span><span class="badge kind">${safe(q.kind)}</span><span class="badge difficulty ${safe(q.difficulty)}">${safe(q.difficulty)}</span></div><span class="status-mini">${solved.has(q.id)?'✓ Ya la resolviste':''}</span></div><div class="question-content"><h2>${safe(q.title)}</h2><p class="instruction">${safe(q.instruction)}</p>${q.code?`<pre class="codebox"><code>${safe(q.code)}</code></pre>`:''}<div class="answers">${input}</div><div class="feedback" id="feedback" role="status" aria-live="polite"></div><div class="submitrow"><button class="button" id="checkBtn">Comprobar</button></div></div><div class="navrow"><button class="button secondary" id="prevBtn">← Anterior</button><button class="button secondary" id="nextBtn">Siguiente →</button></div>`;
+const feedback=document.querySelector('#feedback');const check=()=>{const raw=document.querySelector('#answer').value;
+attempts++;localStorage.setItem('py-practice-attempts',String(attempts));const expected=Array.isArray(q.answer)?q.answer:[q.answer];const ok=expected.some(a=>normalize(raw,q.opts.mode)===normalize(a,q.opts.mode));if(ok){solved.add(q.id);localStorage.setItem('py-practice-solved',JSON.stringify([...solved]));feedback.className='feedback ok';feedback.textContent='¡Correcto!'}else{feedback.className='feedback no';const solution=Array.isArray(q.answer)?q.answer[0]:q.answer;feedback.innerHTML='Incorrecto.<div class="solution"><strong>Solución:</strong><pre>'+safe(solution)+'</pre></div>'}updateStats(filtered())};
+document.querySelector('#checkBtn').onclick=check;document.querySelector('#prevBtn').onclick=()=>{current=(current-1+list.length)%list.length;render()};document.querySelector('#nextBtn').onclick=()=>{current=(current+1)%list.length;render()};const ans=document.querySelector('#answer');if(ans)ans.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();check()}});}
+topicFilter.onchange=()=>{current=0;render()};kindFilter.onchange=()=>{current=0;render()};difficultyFilter.onchange=()=>{current=0;render()};document.querySelector('#randomBtn').onclick=()=>{const list=filtered();if(list.length){current=Math.floor(Math.random()*list.length);render()}};document.querySelector('#shuffleBtn').onclick=()=>{for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]]}current=0;render()};document.querySelector('#resetBtn').onclick=()=>{if(confirm('¿Borrar todos tus aciertos y el número de comprobaciones guardados en este navegador?')){solved.clear();attempts=0;localStorage.removeItem('py-practice-solved');localStorage.removeItem('py-practice-attempts');render()}};document.querySelector('#jumpBtn').onclick=()=>{const list=filtered();if(!list.length)return;const value=prompt(`Elige un número entre 1 y ${list.length}:`,String(current+1));if(value===null)return;const n=Number(value);if(Number.isInteger(n)&&n>=1&&n<=list.length){current=n-1;render()}};
+render();
+})();
+</script>
+</body>
+</html>
