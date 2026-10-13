@@ -606,6 +606,17 @@ const longComplete=(topic,title,code,answer)=>add(topic,'Completar expresión',t
 ].forEach(x=>completeLong(...x));
 
 for(const q of bank.filter(q=>q.kind==='Detectar y corregir')){
+  if(q.title==='Corregir la conversión de texto numérico'){q.code=q.code.replace('valores.append(float(texto))','valores.append(int)');q.title='Corregir una conversión que provoca un error de tipo'}
+  if(q.title==='Corregir el uso de una lista como alias'){q.code=q.code.replace('copia.append(valor)','copia.append[valor]');q.title='Corregir una llamada a append que provoca un error'}
+  if(q.title==='Corregir la comprobación de una subcadena'){q.code=q.code.replace('minusculas.count("a")','minusculas.count("e")');q.title='Corregir el recuento de letras a'}
+  if(q.title==='Corregir validación y conversión de lecturas')q.title='Calcular la media usando solo las lecturas válidas';
+  if(q.title==='Clasificar el límite de temperatura')q.title='Ajustar el límite: 30 grados debe ser normal';
+  if(q.title==='Corregir el intervalo de clasificación')q.title='Clasificar como adulto solo entre 18 y 65 años';
+  if(q.title==='Corregir la condición de una expresión compuesta')q.title='Exigir edad mínima y pH mínimo para validar';
+  if(q.title==='Corregir la condición de neutralidad')q.title='Corregir la clasificación del pH neutro';
+  if(q.title==='Corregir el método que añade una lista completa')q.title='Combinar dos listas incluyendo cada elemento';
+  if(q.title==='Corregir borrado por posición y actualizar la longitud')q.title='Borrar el segundo elemento sin salir del rango';
+  if(q.title==='Corregir retorno en vez de imprimir desde la función')q.title='La función debe devolver un booleano';
   q.code=q.code.replace(/#[^\n]*/g,'');
   q.instruction=q.opts.mode==='block'?'Encuentra los errores sin pistas y escribe el programa corregido completo.':'El programa tiene un error. Localízalo y escribe la línea corregida.';
 }
